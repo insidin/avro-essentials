@@ -1,0 +1,9 @@
+hs_err_pid*
+.classpath
+.project
+.settings
+.worksheet
+*.iml
+**/target
+**/.DS_Store
+**/.idea
