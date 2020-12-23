@@ -15,14 +15,26 @@
     </properties>
 
     <modules>
+        <module>avro-schema</module>
         <module>kafka-connect</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>io.insidin.avro.essentials</groupId>
+                <artifactId>avro-schema</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>connect-api</artifactId>
+                <version>${version.kafka}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>connect-transforms</artifactId>
                 <version>${version.kafka}</version>
                 <scope>provided</scope>
             </dependency>
@@ -44,6 +56,13 @@
                 <version>1.9.2</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.7.0</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -55,5 +74,22 @@
         </repository>
 
     </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.7.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
